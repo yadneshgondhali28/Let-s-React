@@ -1,5 +1,13 @@
+import Demo from "./demo";
+
 function App() {
-  return <h1>Yadnesh Let&apos;s React</h1>;
+  const userName = "Yadnesh";
+  return (
+    <>
+      <Demo />
+      <h2>Let&apos;s Vite + React {userName}!</h2>
+    </>
+  );
 }
 
 export default App;
