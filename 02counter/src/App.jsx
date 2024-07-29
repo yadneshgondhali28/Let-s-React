@@ -3,19 +3,23 @@ function App() {
   //
   let [count, setCount] = useState(0);
 
-  function Counter() {
-    this.incrementCounter = function () {
-      let counter = count + 1;
-      if (counter <= 20) {
-        setCount(counter);
-      }
-    };
-    this.decrementCounter = function () {
-      let counter = count - 1;
-      if (counter >= 0) {
-        setCount(counter);
-      }
-    };
+  class Counter {
+    constructor() {
+      this.incrementCounter = function () {
+        if (count < 20) {
+          setCount(count + 1);
+          // setCount((prevCounter) => prevCounter + 1);
+          // setCount((prevCounter) => prevCounter + 1);
+          // setCount((prevCounter) => prevCounter + 1);
+          // setCount((prevCounter) => prevCounter + 1);
+        }
+      };
+      this.decrementCounter = function () {
+        if (count > 0) {
+          setCount(count - 1);
+        }
+      };
+    }
   }
 
   let counter = new Counter();
