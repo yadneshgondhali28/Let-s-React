@@ -41,31 +41,33 @@ function App() {
   return (
     <>
       <div
-        className="w-full h-screen flex flex-col justify-center items-center"
+        className="w-full h-screen flex justify-center items-center"
         style={{ backgroundColor: color }}
       >
-        <h1 className="text-3xl mb-4">Change Background Color</h1>
-        <div className="btns">
-          <button
-            className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
-            onClick={setRGBBackgroundColor}
-          >
-            RGB
-          </button>
+        <div className="bg-white px-12 py-10 flex flex-col justify-center items-center border-2 border-solid border-black rounded-2xl shadow-xl">
+          <h1 className="text-3xl mb-4">Change Background Color</h1>
+          <div className="btns">
+            <button
+              className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
+              onClick={setRGBBackgroundColor}
+            >
+              RGB
+            </button>
 
-          <button
-            className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
-            onClick={setHEXBackgroundColor}
-          >
-            Hex
-          </button>
+            <button
+              className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
+              onClick={setHEXBackgroundColor}
+            >
+              Hex
+            </button>
 
-          <button
-            className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
-            onClick={setHSLBackgroundColor}
-          >
-            HSL
-          </button>
+            <button
+              className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
+              onClick={setHSLBackgroundColor}
+            >
+              HSL
+            </button>
+          </div>
         </div>
       </div>
     </>
