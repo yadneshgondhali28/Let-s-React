@@ -3,48 +3,49 @@ import { useState } from "react";
 function App() {
   let [color, setColor] = useState("");
 
+  // logic for generating color code
   function generateRGBColorCode() {
-    return Math.floor(Math.random() * 255);
+    return Math.floor(Math.random() * 256);
   }
 
-  function setRGBBackgroundColor() {
-    color = `rgb(${generateRGBColorCode()}, ${generateRGBColorCode()}, ${generateRGBColorCode()})`;
-    return setColor(color);
+  function generateRGBColor() {
+    return `rgb(${generateRGBColorCode()}, ${generateRGBColorCode()}, ${generateRGBColorCode()})`;
   }
 
-  let hexCodes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
-  function getHEXVal() {
-    return Math.floor(Math.random() * hexCodes.length);
-  }
-
-  function setHEXBackgroundColor() {
-    color = "#";
+  function generateHEXColor() {
+    const hexCodes = "0123456789ABCDEF";
+    let newColor = "#";
     for (let i = 0; i < 6; i++) {
-      color += hexCodes[getHEXVal()];
+      newColor += hexCodes[Math.floor(Math.random() * hexCodes.length)];
     }
-    return setColor(color);
+    return newColor;
   }
 
-  function generateHSLColorCode() {
-    let hue = Math.floor(Math.random() * 360);
-    let saturation = Math.floor(Math.random() * 100);
-    let lightness = Math.floor(Math.random() * 100);
+  function generateHSLColor() {
+    let hue = Math.floor(Math.random() * 361);
+    let saturation = Math.floor(Math.random() * 101);
+    let lightness = Math.floor(Math.random() * 101);
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }
 
+  // logic for setting the color
+  function setRGBBackgroundColor() {
+    setColor(generateRGBColor());
+  }
+  function setHEXBackgroundColor() {
+    setColor(generateHEXColor());
+  }
   function setHSLBackgroundColor() {
-    color = generateHSLColorCode();
-    console.log(color);
-    return setColor(color);
+    setColor(generateHSLColor());
   }
 
   return (
     <>
       <div
-        className="w-full h-screen flex justify-center items-center"
+        className="outer-container w-full h-screen flex justify-center items-center"
         style={{ backgroundColor: color }}
       >
-        <div className="bg-white px-12 py-10 flex flex-col justify-center items-center border-2 border-solid border-black rounded-2xl shadow-xl">
+        <div className="inner-container bg-white px-12 py-8 flex flex-col justify-center items-center gap-3 border-2 border-solid border-black rounded-2xl shadow-xl min-h-28">
           <h1 className="text-3xl mb-4">Change Background Color</h1>
           <div className="btns">
             <button
@@ -58,7 +59,7 @@ function App() {
               className="px-6 py-2 mx-2 border-2 border-black border-solid rounded-md"
               onClick={setHEXBackgroundColor}
             >
-              Hex
+              HEX
             </button>
 
             <button
@@ -68,6 +69,7 @@ function App() {
               HSL
             </button>
           </div>
+          <p>Code: {color}</p>
         </div>
       </div>
     </>
